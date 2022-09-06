@@ -1,0 +1,47 @@
+<#if configMemory?has_content>
+<#list configMemory as memory>
+<#if memory.RAM && memory.defaultRAM>
+
+    M_VECTOR_RAM_SIZE = 0x00000180;
+    /* Main DATA section (${memory.name}) */
+<#if (PLAIN_LOAD_IMAGE) && (memory.name == CODEX) >
+    .data : ALIGN_WITH_INPUT
+<#else>  
+    .data : ALIGN(${data_align})
+</#if>
+    {
+       FILL(0xff)
+       
+       __VECTOR_RAM = .;
+       __interrupts_ram_start__ = .; /* Create a global symbol at data start */
+       *(.m_interrupts_ram)     /* This is a user defined section */
+       . += M_VECTOR_RAM_SIZE;
+       . = ALIGN(4) ;
+       __interrupts_ram_end__ = .; /* Define a global symbol at data end */
+       
+       _data = . ;
+       PROVIDE(__start_data_${memory.alias} = .) ;
+       PROVIDE(__start_data_${memory.name} = .) ;
+       *(vtable)
+       *(.ramfunc*)
+       KEEP(*(CodeQuickAccess))
+       KEEP(*(DataQuickAccess))
+       *(RamFunction)
+<#include "extrasections_data.ldt">
+
+       *(.after_vectors)
+       *(.text*)
+       *(.rodata .rodata.* .constdata .constdata.*)
+       . = ALIGN(${text_align});
+       *(.data*)
+       . = ALIGN(${data_align});
+       
+       _edata = . ;
+       PROVIDE(__end_data_${memory.alias} = .) ;
+       PROVIDE(__end_data_${memory.name} = .) ;
+    } > ${memory.name} AT>${CODE}
+    __VECTOR_TABLE = __vectors_start__;
+    __RAM_VECTOR_TABLE_SIZE_BYTES = (__interrupts_ram_end__ - __interrupts_ram_start__);
+</#if>
+</#list>
+</#if>

@@ -1,0 +1,25 @@
+<data:item xmlns:data="data" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="data ../../xsd/alp.xsd" id="ap-optimized-voice-ui" type="sw_pack" format="projectfile" name="optimized voice UI">
+    <display_title>
+        Power Optimized Voice UI
+    </display_title>
+    <overview>
+        <![CDATA[This Application Software Pack provides a power optimized application featuring local voice control using NXP's <a href="https://www.nxp.com/design/software/embedded-software/voice-intelligent-technology:VOICE-INTELLIGENT-TECHNOLOGY">Voice Intelligent Technology (VIT)</a> on the i.MX RT595 Crossover MCU.]]>
+    </overview>
+    <toolchains>
+        <toolchain name="mcux"></toolchain>
+    </toolchains>
+    <families>
+        <family name="imxrt"></family>
+    </families>
+    <nxp_compatible_hw>
+        <hw id="EVK-MIMXRT595"></hw>
+    </nxp_compatible_hw>
+    <peripherals>
+        <peripheral name="i2c"></peripheral>
+        <peripheral name="uart"></peripheral>
+        <peripheral name="dma"></peripheral>
+    </peripherals>
+    <categories>
+        <category name="voice"></category>
+    </categories>
+</data:item>

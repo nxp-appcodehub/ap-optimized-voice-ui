@@ -1,0 +1,4 @@
+source/incbin.o: \
+ ../dsp_binary/dsp_data_release.bin \
+ ../dsp_binary/dsp_reset_release.bin \
+ ../dsp_binary/dsp_text_release.bin 

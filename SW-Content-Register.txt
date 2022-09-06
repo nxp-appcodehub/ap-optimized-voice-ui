@@ -1,0 +1,10 @@
+NXP Software Content Register
+
+Release name: Power Optimized Voice UI
+Release version: 1.0
+Outgoing License: BSD-3-Clause
+License in File: LICENSE.txt
+Description: Demo release of VIT integration for the MIMXRT595-EVK optimized for low power consumption.
+Release location: https://github.com/nxp-appcodehub/ap-optimized-voice-ui
+Origin: NXP (BSD-3-Clause)
+        Amazon (MIT) - https://github.com/FreeRTOS

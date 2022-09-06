@@ -1,0 +1,9 @@
+#Xtensa
+*.bak
+bin
+Makefile
+.settings/org.eclipse.cdt.core.prefs
+.settings/*
+!.settings/targets/xtensa/Release.bts
+!.settings/targets/xtensa/Debug.bts
+**_debug.bin
